@@ -12,15 +12,14 @@ export class App {
   constructor(private readonly controller: ValidationController) {
     ValidationRules
     .ensure((m: App) => m.name)
-    .displayName("Name")
     .required()
     .ensure((m: App) => m.address)
-    .displayName("Address")
     .required()
     .ensure((m: App) => m.age)
     .required()
     .range(0, 120)
     .ensure((m: App) => m.phoneNumber)
+    .displayName("Phone number")
     .required()
     .matches(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/)
     .on(this);
