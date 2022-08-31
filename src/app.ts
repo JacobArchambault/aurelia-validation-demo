@@ -19,6 +19,9 @@ export class App {
     .ensure((m: App) => m.address)
     .displayName("Address")
     .required()
+    .ensure((m: App) => m.age)
+    .required()
+    .range(0, 120)
     .on(this);
   }
 
