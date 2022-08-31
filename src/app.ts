@@ -26,8 +26,9 @@ export class App {
     .on(this);
   }
 
-  private submit(): void {
-    this.controller.validate();
+  private async submit(): Promise<void> {
+    var validationResult = await this.controller.validate();
+    this.message = validationResult.valid ? "Form submitted!" : "Errors! Boooo."
   }
 
 }
