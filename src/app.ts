@@ -1,7 +1,7 @@
-import { autoinject } from 'aurelia-framework';
+import { inject, NewInstance } from 'aurelia-framework';
 import { ValidationController, ValidationRules } from "aurelia-validation";
 
-@autoinject
+@inject(NewInstance.of(ValidationController))
 export class App {
   private name: string;
   private address: string;
@@ -27,8 +27,11 @@ export class App {
   }
 
   private async submit(): Promise<void> {
-    var validationResult = await this.controller.validate();
-    this.message = validationResult.valid ? "Form submitted!" : "Errors! Boooo."
+    await this.controller
+    .validate()
+    .then(validationResult => 
+      this.message = validationResult.valid ? "Form submitted!" : "Errors! Boooo."
+      );
   }
 
 }
