@@ -7,7 +7,7 @@
     <label for="age">Age</label>
     <input value.bind="age & validate" name="age" type="number">
     <label for="phone-number">Phone number</label>
-    <input value.bind="phoneNumber" name="phone-number" type="text">
+    <input value.bind="phoneNumber & validate" name="phone-number" type="text">
     <button click.delegate="submit()">Submit</button>
     <ul>
       <li repeat.for="error of controller.errors">

@@ -20,6 +20,9 @@ export class App {
     .ensure((m: App) => m.age)
     .required()
     .range(0, 120)
+    .ensure((m: App) => m.phoneNumber)
+    .required()
+    .matches(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/)
     .on(this);
   }
 
