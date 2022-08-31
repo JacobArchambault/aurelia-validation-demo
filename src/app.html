@@ -1,19 +1,34 @@
 <template>
   <form>
-    <label for="name">Name</label>
-    <input value.bind="name & validate" name="name" type="text">
-    <label for="address">Address</label>
-    <input value.bind="address & validate" name="address" type="text">
-    <label for="age">Age</label>
-    <input value.bind="age & validate" name="age" type="number">
-    <label for="phone-number">Phone number</label>
-    <input value.bind="phoneNumber & validate" name="phone-number" type="text">
+    <div validation-errors.bind="nameErrors">
+      <label for="name">Name</label>
+      <input type="text" name="name" value.bind="name & validate">
+      <span repeat.for="errorInfo of nameErrors">
+        ${errorInfo.error.message}
+      </span>
+    </div>
+    <div validation-errors.bind="addressErrors">
+      <label for="address">Address</label>
+      <input value.bind="address & validate" name="address" type="text">
+      <span repeat.for="errorInfo of addressErrors">
+        ${errorInfo.error.message}
+      </span>
+    </div>
+    <div validation-errors.bind="ageErrors">
+      <label for="age">Age</label>
+      <input value.bind="age & validate" name="age" type="number">
+      <span repeat.for="errorInfo of ageErrors">
+        ${errorInfo.error.message}
+      </span>
+    </div>
+    <div validation-errors.bind="phoneNumberErrors">
+      <label for="phone-number">Phone number</label>
+      <input value.bind="phoneNumber & validate" name="phone-number" type="text">
+      <span repeat.for="errorInfo of phoneNumberErrors">
+        ${errorInfo.error.message}
+      </span>
+    </div>
     <button click.delegate="submit()">Submit</button>
-    <ul>
-      <li repeat.for="error of controller.errors">
-        ${error.message}
-      </li>
-    </ul>    
   </form>
   <h1>${message}</h1>
 </template>
