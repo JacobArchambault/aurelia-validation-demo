@@ -28,6 +28,18 @@
         ${errorInfo.error.message}
       </span>
     </div>
+    <div validation-errors.bind=dropdownErrors>
+      <select value.bind="selectedProductId & validate">
+        <option model.bind="null">Choose...</option>
+        <option repeat.for="product of products"
+                model.bind="product.id">
+          ${product.id} - ${product.name}
+        </option>
+      </select>
+      <span repeat.for="errorInfo of dropdownErrors">
+        ${errorInfo.error.message}
+      </span>
+    </div>
     <button click.delegate="submit()">Submit</button>
   </form>
   <h1>${message}</h1>
